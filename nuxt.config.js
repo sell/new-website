@@ -1,4 +1,3 @@
-
 export default {
   /*
   ** Nuxt target
@@ -62,6 +61,10 @@ export default {
     '@nuxt/http',
   ],
 
+  http: {
+    baseURL: process.env.isDev ? '' : 'https://jay-codes.onrender.com/'
+  },
+
   /*
   ** Server Middleware
   */
@@ -74,7 +77,7 @@ export default {
   */
   server: {
    // port: 8000, // default: 3000
-   host: '0.0.0.0' // default: localhost
+   host: !process.env.isDev ? '0.0.0.0' : 'localhost' // default: localhost
   },
 
   /*
