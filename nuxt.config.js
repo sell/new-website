@@ -72,10 +72,10 @@ export default {
   /*
   ** For deployment you might want to edit host and port
   */
-  // server: {
-  //  port: 8000, // default: 3000
-  //  host: '0.0.0.0' // default: localhost
-  // },
+  server: {
+   // port: 8000, // default: 3000
+   host: '0.0.0.0' // default: localhost
+  },
 
   /*
   ** Build configuration
