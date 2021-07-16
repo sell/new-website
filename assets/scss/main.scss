@@ -1,0 +1,219 @@
+@import "navbar";
+@import "extra";
+
+.home {
+  height: calc(100vh - 14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    color: #11101d;
+    font-size: 2.5rem;
+    @media screen and (max-width: 500px) {
+      font-size: 1.6rem;
+    }
+  }
+  #about_words {
+    text-decoration: underline;
+    color: #35495e;
+    border-right: .12em solid #35495e;
+    /*
+      css tricks animation
+     */
+    animation:
+      blink-caret .75s step-end infinite;
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #35495e; }
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 50%;
+  position: relative;
+
+  .field, .buttons {
+    transform: translateY(-475px);
+    animation: inputTextLoad 1s forwards;
+
+    @keyframes inputTextLoad {
+      from {
+        transform: translateY(-475px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+  }
+
+  label {
+    margin-top: 7px;
+  }
+  label, input {
+    display: block;
+  }
+  input, textarea {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid var(--app-color);
+    box-shadow:
+      0  5px 10px rgba(154,160,185,0.05),
+      0 15px 40px rgba(166,173,201,0.2);
+  }
+  button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid var(--app-color);
+    background-color: #fff;
+    box-shadow:
+      0  5px 10px rgba(154,160,185,0.05),
+      0 15px 40px rgba(166,173,201,0.2);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .loader__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media screen and (max-width: 790px) {
+    width: 100%;
+  }
+}
+
+.tools__langs__container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-between;
+  margin-top: 10px;
+  div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    span {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    grid-template-columns: auto auto;
+  }
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+    grid-template-columns: auto;
+  }
+}
+
+/* Card Css */
+.card {
+  width: 342px;
+  background-color: #fff;
+  border-radius: 4px;
+  border-width: thin;
+  display: block;
+  max-width: 100%;
+  outline: none;
+  text-decoration: none;
+  transition-property: box-shadow,opacity;
+  overflow-wrap: break-word;
+  position: relative;
+  white-space: normal;
+  box-shadow:
+    0  5px 10px rgba(154,160,185,0.05),
+    0 15px 40px rgba(166,173,201,0.2);
+  transition: transform .6s ease;
+  .image {
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #eee!important;
+    border-color: #eee!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+  .card__title {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: .0125em;
+    line-height: 2rem;
+    word-break: break-all;
+    padding: 16px;
+  }
+  .card__subtitle {
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    letter-spacing: .0071428571em;
+    margin-top: -16px;
+    padding: 0 16px 16px 16px;
+  }
+  .card__text {
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    letter-spacing: .0071428571em;
+    padding: 0 16px 16px 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    max-height: 60px;
+    height: 44px;
+  }
+  .card__tools {
+    padding: 16px;
+    i {
+      font-size: 20px !important;
+    }
+  }
+  .card__links {
+    padding: 0 16px 16px;
+    border-radius: 5px;
+    a {
+      padding: 5px 8px;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+      span {
+        color: rgba(0, 0, 0, .87)
+      }
+      &:hover {
+        background-color: rgb(244, 244, 244, 0.8);
+      }
+    }
+  }
+  &:hover {
+    transform: translateY(-11px);
+  }
+}
+
+/* Animations */
+@for $i from 1 to 6 {
+  .form div:nth-child(#{$i}), .box:nth-child(#{$i}) {
+    animation-delay: $i * 0.25s;
+  }
+}

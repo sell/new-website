@@ -1,0 +1,146 @@
+.nuxt-link-exact-active {
+  background: #fff !important;
+  .links_name, i {
+    color: #11101d !important;
+  }
+}
+
+.notification {
+  border: 1px solid;
+  border-radius: 4px;
+  width: 50%;
+  padding: 5px;
+  text-align: center;
+}
+
+.error {
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  border-color: red;
+}
+
+.success {
+  background-color: lawngreen;
+  color: white;
+  border-color: lawngreen;
+}
+
+.box {
+  background-color: white;
+  width: 90%;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-shadow:
+    0  5px 10px rgba(154,160,185,0.05),
+    0 15px 40px rgba(166,173,201,0.2);
+
+  @media screen and (max-width: 480px) {
+    width: 103%;
+  }
+
+  transform: translateY(-550px);
+  animation: inputTextLoad 1s forwards;
+
+  @keyframes inputTextLoad {
+    from {
+      transform: translateY(-550px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
+}
+
+/* Css Loader */
+.loader {
+  border: 6px solid #11101d; /* Light grey */
+  border-top: 6px solid #fff; /* Blue */
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* While Loading Background */
+.loading__background {
+  background-color: rgba(255,255,255,0.4) !important;
+}
+
+.grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 350px);
+  grid-gap: 30px !important;
+  align-items: center !important;
+  justify-content: space-evenly !important;
+  transition: grid-template-columns 0.8s;
+
+  @media screen and (max-width: 820px) {
+    grid-template-columns: repeat(1, 350px);
+  }
+  @media screen and (max-width: 470px) {
+    grid-template-columns: repeat(1, 275px);
+  }
+}
+
+/* Fade in effect */
+.fade-in {
+  opacity: 0;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.initial {
+  p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 1.65rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  ul {
+    font-size: 1rem;
+    list-style-type: disc;
+    line-height: 2;
+    margin-left: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/*
+  Button Styles
+ */
+
+button {
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid var(--app-color);
+  background-color: #fff;
+  box-shadow:
+    0  5px 10px rgba(154,160,185,0.05),
+    0 15px 40px rgba(166,173,201,0.2);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
