@@ -37,24 +37,24 @@
         <span class="tooltip">Contact</span>
       </li>
       <li>
-        <nuxt-link to="/redirect?url=https://github.com/sell">
+        <a target="_blank" href="https://github.com/sell">
           <i class="bx bxl-github" />
           <span class="links_name">Github</span>
-        </nuxt-link>
+        </a>
         <span class="tooltip">Github</span>
       </li>
       <li>
-        <nuxt-link to="/redirect?url=https://botlists.com">
+        <a target="_blank" href="https://botlists.com">
           <i class="bx bx-link" />
           <span class="links_name">Discord Bots List</span>
-        </nuxt-link>
+        </a>
         <span class="tooltip">Botlists</span>
       </li>
       <li>
-        <nuxt-link to="/redirect?url=https://old.jayson.codes">
+        <a target="_blank" href="https://old.jayson.codes">
           <i class="bx bx-link" />
           <span class="links_name">Old Website</span>
-        </nuxt-link>
+        </a>
         <span class="tooltip">OldWebsite</span>
       </li>
       <li>
