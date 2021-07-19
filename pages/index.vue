@@ -21,35 +21,48 @@ export default {
     return {
       word: '',
       words: ['Developer.', 'Gamer.', 'Animal Lover.', 'Privacy Advocate.', 'Traveler.'],
+      wordsIndex: 0,
+      initialLoadWordInterval: null,
+      mainWordInterval: null,
     };
   },
   created() {
-    let wordsIndex = 0;
-    let wordIndex = 0;
-    const word = this.words[wordsIndex];
-    const wordInterval = setInterval(() => {
-      if (wordIndex < word.length) {
-        this.word += word.charAt(wordIndex);
-        ++wordIndex;
-      } else {
-        clearInterval(wordInterval);
-      }
-    }, 50);
-    setInterval(() => {
-      this.word = '';
-      wordsIndex < this.words.length - 1 ? ++wordsIndex : wordsIndex = 0;
+    this.initialInterval();
+    this.mainInterval();
+  },
+  beforeDestroy() {
+    clearInterval(this.mainWordInterval);
+  },
+  methods: {
+    initialInterval() {
       let wordIndex = 0;
-      const word = this.words[wordsIndex];
-      const wordInterval = setInterval(() => {
+      const word = this.words[this.wordsIndex];
+      this.initialLoadWordInterval = setInterval(() => {
         if (wordIndex < word.length) {
           this.word += word.charAt(wordIndex);
           ++wordIndex;
         } else {
-          clearInterval(wordInterval);
+          clearInterval(this.initialLoadWordInterval);
         }
       }, 50);
-      ++wordsIndex;
-    }, 4000);
+    },
+    mainInterval() {
+      this.mainWordInterval = setInterval(() => {
+        this.word = '';
+        this.wordsIndex < this.words.length - 1 ? ++this.wordsIndex : this.wordsIndex = 0;
+        let wordIndex = 0;
+        const word = this.words[this.wordsIndex];
+        const wordInterval = setInterval(() => {
+          if (wordIndex < word.length) {
+            this.word += word.charAt(wordIndex);
+            ++wordIndex;
+          } else {
+            clearInterval(wordInterval);
+          }
+        }, 50);
+        ++this.wordsIndex;
+      }, 4000);
+    },
   },
 };
 </script>
