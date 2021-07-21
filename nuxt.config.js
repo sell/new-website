@@ -62,7 +62,7 @@ export default {
   ],
 
   http: {
-    baseURL: process.env.NODE_ENV === 'production' ?  'https://jayson.codes' : '',
+    baseURL: process.env.NODE_ENV === 'production' ?  'https://www.jayson.codes' : '',
   },
 
   /*
