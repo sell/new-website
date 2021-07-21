@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       word: '',
+      wordIndex: 0,
       words: ['Developer.', 'Gamer.', 'Animal Lover.', 'Privacy Advocate.', 'Traveler.'],
       wordsIndex: 0,
       initialLoadWordInterval: null,
@@ -35,12 +36,14 @@ export default {
   },
   methods: {
     initialInterval() {
-      let wordIndex = 0;
       const word = this.words[this.wordsIndex];
       this.initialLoadWordInterval = setInterval(() => {
-        if (wordIndex < word.length) {
-          this.word += word.charAt(wordIndex);
-          ++wordIndex;
+        /*
+          If the word index is less than the word lengths it'll keep adding characters
+         */
+        if (this.wordIndex < word.length) {
+          this.word += word.charAt(this.wordIndex);
+          ++this.wordIndex;
         } else {
           clearInterval(this.initialLoadWordInterval);
         }
@@ -48,20 +51,51 @@ export default {
     },
     mainInterval() {
       this.mainWordInterval = setInterval(() => {
-        this.word = '';
+        /*
+          This interval is to remove the characters, aka
+          making a substring and getting the characters from 0 to x
+         */
+        let removeWordInterval = setInterval(() => {
+          if (this.wordIndex > 0) {
+            this.word = this.word.substr(0, this.wordIndex - 1);
+            --this.wordIndex;
+          } else {
+            /*
+              Clearing the interval then setting it to null to run the interval below.
+              *
+             */
+            clearInterval(removeWordInterval);
+            removeWordInterval = null;
+          }
+        }, 75);
+        /*
+          Checking if the wordsIndex is the same size as the array
+          * If so we set the index back to 0
+          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+         */
         this.wordsIndex < this.words.length - 1 ? ++this.wordsIndex : this.wordsIndex = 0;
-        let wordIndex = 0;
         const word = this.words[this.wordsIndex];
+
+        /*
+          Creating a word interval, this is to add characters to the string.
+          * Typing effect
+         */
         const wordInterval = setInterval(() => {
-          if (wordIndex < word.length) {
-            this.word += word.charAt(wordIndex);
-            ++wordIndex;
+          if (removeWordInterval != null) {
+            return;
+          }
+          if (this.wordIndex < word.length) {
+            this.word += word.charAt(this.wordIndex);
+            ++this.wordIndex;
           } else {
             clearInterval(wordInterval);
           }
         }, 50);
+        /*
+          We increase the word index to move onto the next word.
+         */
         ++this.wordsIndex;
-      }, 4000);
+      }, 5000);
     },
   },
 };

@@ -5,7 +5,10 @@
       v-if="error.show || success.show"
       :class="`notification ${error.show && 'error'} ${success.show && 'success'}`"
     >
-      {{ error.message || success.message }}
+      <p>{{ error.message || success.message }}</p>
+      <span class="close" @click="closeNotification">
+        <i style="font-size: 1.3rem" class="bx bx-x" />
+      </span>
     </div>
     <div class="form">
       <div v-if="loading" class="loader__container">
@@ -92,6 +95,12 @@ export default {
     };
   },
   methods: {
+    closeNotification() {
+      this.error.show = false;
+      this.error.message = '';
+      this.success.show = false;
+      this.success.message = '';
+    },
     async submit() {
       if (this.loading) {
         return;
