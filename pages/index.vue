@@ -1,6 +1,13 @@
 <template>
   <div class="home">
-    <h1>I am a <span id="about_words">{{ word }}</span></h1>
+    <h1>
+      I am a
+      <span id="about_words">
+        <keep-alive>
+          {{ word }}
+        </keep-alive>
+      </span>
+    </h1>
     <p>
       I am currently
       <span :style="{ color: status.color }">{{ status.status }}</span>
@@ -25,6 +32,7 @@ export default {
       wordsIndex: 0,
       initialLoadWordInterval: null,
       mainWordInterval: null,
+      status: 'started',
     };
   },
   created() {
@@ -33,6 +41,9 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.mainWordInterval);
+  },
+  mounted() {
+    this.init();
   },
   methods: {
     initialInterval() {
@@ -51,6 +62,9 @@ export default {
     },
     mainInterval() {
       this.mainWordInterval = setInterval(() => {
+        if (this.status !== 'started') {
+          return;
+        }
         /*
           This interval is to remove the characters, aka
           making a substring and getting the characters from 0 to x
@@ -96,6 +110,26 @@ export default {
          */
         ++this.wordsIndex;
       }, 5000);
+    },
+    /*
+      Followed this to stop interval on tab switch to refrain from word spazzing.
+      * https://forum.vuejs.org/t/stop-setinterval-when-switching-to-another-tab/89647/2
+     */
+    startTimer() {
+      this.status = 'started';
+    },
+    pauseTimer() {
+      this.status = 'paused';
+    },
+    windowOnFocus(event) {
+      this.startTimer();
+    },
+    windowOnBlur(event) {
+      this.pauseTimer();
+    },
+    init() {
+      window.onfocus = this.startTimer;
+      window.onblur = this.pauseTimer;
     },
   },
 };
