@@ -62,7 +62,7 @@ export default {
   ],
 
   http: {
-    baseURL: process.env.isDev ? '' : 'https://jay-codes.onrender.com/'
+    baseURL: process.env.isDev ? '' : 'https://jayson.codes'
   },
 
   /*
@@ -76,8 +76,8 @@ export default {
   ** For deployment you might want to edit host and port
   */
   server: {
-   // port: 8000, // default: 3000
-   host: !process.env.isDev ? '0.0.0.0' : 'localhost' // default: localhost
+    port: 10000,
+    host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost'
   },
 
   /*
