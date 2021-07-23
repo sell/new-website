@@ -10,6 +10,9 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
+    htmlAttrs: {
+      lang: 'en'
+    },
     title: 'Jay Codes',
     meta: [
       { charset: 'utf-8' },
