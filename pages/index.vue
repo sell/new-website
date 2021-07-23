@@ -3,9 +3,7 @@
     <h1>
       I am a
       <span id="about_words">
-        <keep-alive>
-          {{ word }}
-        </keep-alive>
+        {{ word }}
       </span>
     </h1>
     <p>
