@@ -61,6 +61,17 @@
           :class="{ loading__background: loading }"
         />
       </div>
+      <div class="field">
+        <div class="input">
+          <input type="checkbox" @click="agreed = !agreed">
+          <p>
+            By Submitting this form you agree to the:
+            <nuxt-link to="/privacy">
+              Privacy Policy
+            </nuxt-link>.
+          </p>
+        </div>
+      </div>
       <div class="buttons">
         <button :class="{ loading__background: loading }" @click="submit">
           Submit
@@ -83,6 +94,7 @@ export default {
       email: '',
       subject: '',
       message: '',
+      agreed: false,
       loading: false,
       error: {
         show: false,
@@ -102,7 +114,7 @@ export default {
       this.success.message = '';
     },
     async submit() {
-      if (this.loading) {
+      if (this.loading || !this.agreed) {
         return;
       }
       this.error.show = false;

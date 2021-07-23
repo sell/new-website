@@ -32,7 +32,7 @@ export default {
       wordsIndex: 0,
       initialLoadWordInterval: null,
       mainWordInterval: null,
-      status: 'started',
+      intervalStatus: 'started',
     };
   },
   created() {
@@ -41,9 +41,6 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.mainWordInterval);
-  },
-  mounted() {
-    this.init();
   },
   methods: {
     initialInterval() {
@@ -62,7 +59,7 @@ export default {
     },
     mainInterval() {
       this.mainWordInterval = setInterval(() => {
-        if (this.status !== 'started') {
+        if (this.intervalStatus !== 'started') {
           return;
         }
         /*
@@ -116,10 +113,10 @@ export default {
       * https://forum.vuejs.org/t/stop-setinterval-when-switching-to-another-tab/89647/2
      */
     startTimer() {
-      this.status = 'started';
+      this.intervalStatus = 'started';
     },
     pauseTimer() {
-      this.status = 'paused';
+      this.intervalStatus = 'paused';
     },
     windowOnFocus(event) {
       this.startTimer();
@@ -131,6 +128,9 @@ export default {
       window.onfocus = this.startTimer;
       window.onblur = this.pauseTimer;
     },
+  },
+  mounted() {
+    this.init();
   },
 };
 </script>
