@@ -1,0 +1,17 @@
+{
+  "0": {
+    "status": "offline",
+    "color": "gray",
+    "emoji": "bx-sleepy"
+  },
+  "1": {
+    "status": "online",
+    "color": "green",
+    "emoji": "bxs-circle bx-flashing"
+  },
+  "2": {
+    "status": "busy",
+    "color": "red",
+    "emoji": "bxs-circle bx-flashing"
+  }
+}

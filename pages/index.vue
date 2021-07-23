@@ -19,10 +19,14 @@
 <script>
 export default {
   async asyncData({ $http }) {
-    const status = await $http.$get('/api/status');
-    return {
-      status,
-    };
+    try {
+      const status = await $http.$get('/api/status');
+      return {
+        status,
+      };
+    } catch (e) {
+      console.log(e);
+    }
   },
   data() {
     return {
