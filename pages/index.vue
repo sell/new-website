@@ -30,7 +30,7 @@ export default {
     return {
       word: '',
       wordIndex: 0,
-      words: ['Developer.', 'Gamer.', 'Animal Lover.', 'Privacy Advocate.', 'Traveler.'],
+      words: ['Web Developer.', 'Bot Developer.', 'Occasional Pentester.', 'Privacy Advocate.', 'Traveler.'],
       wordsIndex: 0,
       initialLoadWordInterval: null,
       mainWordInterval: null,
@@ -55,6 +55,7 @@ export default {
           this.word += word.charAt(this.wordIndex);
           ++this.wordIndex;
         } else {
+          this.wordsIndex += 1;
           clearInterval(this.initialLoadWordInterval);
         }
       }, 50);
@@ -86,8 +87,7 @@ export default {
           * If so we set the index back to 0
           * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
          */
-        this.wordsIndex < this.words.length - 1 ? ++this.wordsIndex : this.wordsIndex = 0;
-        const word = this.words[this.wordsIndex];
+        const word = this.words[this.wordsIndex < this.words.length - 1 ? this.wordsIndex : this.wordsIndex = 0];
 
         /*
           Creating a word interval, this is to add characters to the string.
