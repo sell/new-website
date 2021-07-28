@@ -36,15 +36,22 @@ export default {
       mainWordInterval: null,
       intervalStatus: 'started',
       refreshPageInterval: null,
+      typingSound: null,
     };
-  },
-  created() {
-    this.initialInterval();
-    this.mainInterval();
   },
   beforeDestroy() {
     clearInterval(this.refreshPageInterval);
     clearInterval(this.mainWordInterval);
+    this.typingSound.pause();
+    this.typingSound = null;
+  },
+  mounted() {
+    this.typingSound = new Audio('https://assets.codepen.io/162656/audio-old-typewriter.wav');
+    this.typingSound.play();
+    this.initialInterval();
+    this.mainInterval();
+    this.init();
+    this.refreshPage();
   },
   methods: {
     refreshPage() {
@@ -62,7 +69,9 @@ export default {
         if (this.wordIndex < word.length) {
           this.word += word.charAt(this.wordIndex);
           ++this.wordIndex;
+          this.typingSound.play();
         } else {
+          this.typingSound.pause();
           this.wordsIndex += 1;
           clearInterval(this.initialLoadWordInterval);
         }
@@ -81,11 +90,13 @@ export default {
           if (this.wordIndex > 0) {
             this.word = this.word.substr(0, this.wordIndex - 1);
             --this.wordIndex;
+            this.typingSound.play();
           } else {
             /*
               Clearing the interval then setting it to null to run the interval below.
               *
              */
+            this.typingSound.pause();
             clearInterval(removeWordInterval);
             removeWordInterval = null;
           }
@@ -108,7 +119,9 @@ export default {
           if (this.wordIndex < word.length) {
             this.word += word.charAt(this.wordIndex);
             ++this.wordIndex;
+            this.typingSound.play();
           } else {
+            this.typingSound.pause();
             clearInterval(wordInterval);
           }
         }, 50);
@@ -138,10 +151,6 @@ export default {
       window.onfocus = this.startTimer;
       window.onblur = this.pauseTimer;
     },
-  },
-  mounted() {
-    this.init();
-    this.refreshPage();
   },
 };
 </script>
