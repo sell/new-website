@@ -11,7 +11,7 @@ export default {
   */
   head: {
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     title: 'Jay Codes',
     meta: [
@@ -65,7 +65,7 @@ export default {
   ],
 
   http: {
-    baseURL: process.env.NODE_ENV === 'production' ?  'https://www.jayson.codes' : '',
+    baseURL: process.env.NODE_ENV === 'production' ? 'https://www.jayson.codes' : '',
   },
 
   /*
@@ -80,7 +80,7 @@ export default {
   */
   server: {
     port: 10000,
-    host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost'
+    host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost',
   },
 
   /*

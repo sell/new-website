@@ -1,5 +1,4 @@
-@import "navbar";
-@import "extra";
+@import 'themes', 'navbar', 'extra';
 
 .home {
   height: calc(100vh - 14px);
@@ -8,16 +7,17 @@
   align-items: center;
   flex-direction: column;
   h1 {
-    color: #11101d;
+    color: var(--text-color);
     font-size: 2.5rem;
     @media screen and (max-width: 500px) {
       font-size: 1.6rem;
     }
   }
+
   #about_words {
     text-decoration: underline;
-    color: #35495e;
-    border-right: .12em solid #35495e;
+    color: var(--animation-text);
+    border-right: .12em solid var(--animation-text);
     /*
       css tricks animation
      */
@@ -25,7 +25,7 @@
       blink-caret .75s step-end infinite;
     @keyframes blink-caret {
       from, to { border-color: transparent }
-      50% { border-color: #35495e; }
+      50% { border-color: var(--animation-text); }
     }
   }
 }
@@ -35,6 +35,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  h1 {
+    color: var(--text-color);
+  }
+}
+
+.projects {
+  h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 12px;
+  }
 }
 
 .form {
@@ -45,15 +57,15 @@
   position: relative;
 
   .field, .buttons {
-    transform: translateY(-475px);
-    animation: inputTextLoad 1s forwards;
+    opacity: 0;
+    animation: fadeInOpacity 1 ease-in 1s forwards;
 
-    @keyframes inputTextLoad {
-      from {
-        transform: translateY(-475px);
+    @keyframes fadeInOpacity {
+      0% {
+        opacity: 0;
       }
-      to {
-        transform: translateY(0px);
+      100% {
+        opacity: 1;
       }
     }
   }
@@ -118,6 +130,10 @@
   @media screen and (max-width: 790px) {
     width: 100%;
   }
+}
+
+label, input, .home p, .input p {
+  color: var(--text-color);
 }
 
 .tools__langs__container {
@@ -239,3 +255,9 @@
     animation-delay: $i * 0.25s;
   }
 }
+
+// @for $i from 1 to 7 {
+//   .field:nth-child(#{$i}) {
+//     animation-delay: $i * 0.25s;
+//   }
+// }

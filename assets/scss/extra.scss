@@ -50,6 +50,7 @@
 
 .box {
   background-color: white;
+  opacity: 0;
   width: 90%;
   padding: 20px;
   border-radius: 5px;
@@ -61,18 +62,8 @@
   @media screen and (max-width: 480px) {
     width: 103%;
   }
-
-  transform: translateY(-550px);
-  animation: inputTextLoad 1s forwards;
-
-  @keyframes inputTextLoad {
-    from {
-      transform: translateY(-550px);
-    }
-    to {
-      transform: translateY(0px);
-    }
-  }
+  
+  animation: fadeInOpacity 1 1s forwards;
 }
 
 /* Css Loader */

@@ -42,7 +42,7 @@ export default {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background: #1d1b31;
+    background: var(--navbar-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,9 +58,9 @@ export default {
     position: absolute;
     bottom: 30px;
     right: 20px;
-    height: 140px;
+    height: 120px;
     width: 300px;
-    background: #1d1b31;
+    background: var(--navbar-color);
     border-radius: 5px;
     padding: 5px;
     animation: open 2s forwards;
@@ -72,7 +72,7 @@ export default {
       }
       100% {
         width: 300px;
-        height: 140px;
+        height: 120px;
       }
     }
 

@@ -3,6 +3,12 @@
 @import url('https://fonts.googleapis.com/css?family=Nova%20Flat');
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=PT+Sans&display=swap');
 
+@font-face {
+  font-family: 'PT Sans', "Poppins", sans-serif;
+  font-display: swap; // ---> It will fix this issue.
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +21,7 @@
   top: 0;
   height: 100%;
   width: 78px;
-  background: #11101d;
+  background: var(--navbar-color);
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
@@ -127,7 +133,7 @@
   width: 100%;
 }
 
-.sidebar li a {
+.sidebar li a, .links_section {
   display: flex;
   height: 100%;
   width: 100%;
@@ -135,12 +141,13 @@
   align-items: center;
   text-decoration: none;
   transition: all 0.4s ease;
-  background: #11101d;
+  background: var(--navbar-color);
 }
-.sidebar li a:hover {
+.sidebar li a:hover, .links_section:hover {
   background: #fff;
 }
-.sidebar li a .links_name {
+.sidebar li a .links_name, 
+.links_section .links_name {
   color: #fff;
   font-size: 15px;
   font-weight: 400;
@@ -149,14 +156,17 @@
   pointer-events: none;
   transition: 0.4s;
 }
-.sidebar.open li a .links_name {
+.sidebar.open li a .links_name, 
+.sidebar.open .links_section .links_name {
   opacity: 1;
   pointer-events: auto;
 }
 .sidebar li a:hover .links_name,
-.sidebar li a:hover i {
+.sidebar li a:hover i,
+.sidebar .links_section:hover i,
+.sidebar .links_section:hover .links_name {
   transition: all 0.5s ease;
-  color: #11101d;
+  color: var(--navbar-color);
 }
 .sidebar li i {
   height: 50px;
@@ -167,11 +177,8 @@
 
 .content {
   position: relative;
-  //background-color: #ffffff;
+  background-color: var(--app-background-color);
   //background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
-  background: linear-gradient(-45deg, #cfd9df, #e2ebf0, #fdfbfb, #ebedee);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
   min-height: 100vh;
   top: 0;
   left: 78px;
@@ -193,4 +200,8 @@
     left: 0;
     width: 100%;
   }
+}
+
+.links_section {
+  cursor: pointer;
 }

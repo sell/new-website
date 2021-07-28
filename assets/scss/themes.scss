@@ -1,0 +1,13 @@
+:root {
+  --app-background-color: #FFFFFF;
+  --text-color: #11101d;
+  --animation-text: #35495e;
+  --navbar-color: #11101d;
+}
+
+[theme="dark"] {
+  --app-background-color: #5C5470;
+  --text-color: #DBD8E3;
+  --animation-text: #f3f3f3;
+  --navbar-color: #2A2438;
+}

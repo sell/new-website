@@ -35,6 +35,7 @@ export default {
       initialLoadWordInterval: null,
       mainWordInterval: null,
       intervalStatus: 'started',
+      refreshPageInterval: null,
     };
   },
   created() {
@@ -42,9 +43,16 @@ export default {
     this.mainInterval();
   },
   beforeDestroy() {
+    clearInterval(this.refreshPageInterval);
     clearInterval(this.mainWordInterval);
   },
   methods: {
+    refreshPage() {
+      this.refreshPageInterval = setInterval(() => {
+        window.location.reload(true);
+        // reloading page to stop interval bug
+      }, 60000);
+    },
     initialInterval() {
       const word = this.words[this.wordsIndex];
       this.initialLoadWordInterval = setInterval(() => {
@@ -133,6 +141,7 @@ export default {
   },
   mounted() {
     this.init();
+    this.refreshPage();
   },
 };
 </script>
