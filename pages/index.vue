@@ -46,6 +46,7 @@ export default {
     this.typingSound = null;
   },
   mounted() {
+    // I do not own this file, have a issue? Contact me, i'll remove.
     this.typingSound = new Audio('https://assets.codepen.io/162656/audio-old-typewriter.wav');
     this.typingSound.play();
     this.initialInterval();
