@@ -1,13 +1,12 @@
 const { Router } = require('express');
-const nodeMailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
+
+const { sendNotificationEmail } = require('../utils/functions');
 
 const limiter = rateLimit({
   windowMs: 30 * 60 * 1000,
   max: 5,
 });
-
-const mailTransport = nodeMailer.createTransport(`smtps://${process.env.EMAIL_USERNAME}%40gmail.com:${process.env.EMAIL_PASSWORD}@smtp.gmail.com`);
 
 /*
   todo: Add redis to cache requests and limit user from abusing (cache emails - encrypted, cache ips - encrypted)
@@ -25,8 +24,7 @@ router.post('/contact', limiter, async(req, res) => {
     return;
   }
   try {
-    const data = await sendNotificationEmail(email, subject, message);
-    console.log(data);
+    await sendNotificationEmail(email, subject, message);
     res.json({
       submitted: true,
     });
@@ -37,21 +35,5 @@ router.post('/contact', limiter, async(req, res) => {
     });
   }
 });
-
-function sendNotificationEmail(email, subject, text) {
-  const mailOptions = {
-    from: `"Personal Website" <${email}>`,
-    to: process.env.EMAIL_MAIN,
-    subject: `Website - ${subject}`,
-    text,
-  };
-  return new Promise((resolve, reject) => mailTransport.sendMail(mailOptions).then(() => {
-    console.log('New star email notification sent to: ' + email);
-    resolve('New star email notification sent to: ' + email);
-  }).catch((e) => {
-    console.log(e);
-    reject(new Error('An error happened'));
-  }));
-}
 
 module.exports = router;

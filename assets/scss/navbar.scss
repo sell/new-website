@@ -1,10 +1,10 @@
 /* Google Font Link */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Nova%20Flat');
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=PT+Sans&display=swap');
 
 @font-face {
-  font-family: 'PT Sans', "Poppins", sans-serif;
+  font-family: 'PT Sans', 'Poppins', sans-serif;
   font-display: swap; // ---> It will fix this issue.
   font-style: normal;
 }
@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'PT Sans', "Poppins", sans-serif;
+  font-family: 'PT Sans', 'Poppins', sans-serif;
 }
 .sidebar {
   position: fixed;
@@ -106,11 +106,13 @@
   transition: 0s;
 }
 .sidebar li:hover .tooltip {
-  opacity: 1;
-  pointer-events: auto;
-  transition: all 0.4s ease;
-  top: 50%;
-  transform: translateY(-50%);
+  @media (hover) {
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 .sidebar.open li .tooltip {
   display: none;
@@ -133,7 +135,8 @@
   width: 100%;
 }
 
-.sidebar li a, .links_section {
+.sidebar li a,
+.links_section {
   display: flex;
   height: 100%;
   width: 100%;
@@ -143,10 +146,11 @@
   transition: all 0.4s ease;
   background: var(--navbar-color);
 }
-.sidebar li a:hover, .links_section:hover {
+.sidebar li a:hover,
+.links_section:hover {
   background: #fff;
 }
-.sidebar li a .links_name, 
+.sidebar li a .links_name,
 .links_section .links_name {
   color: #fff;
   font-size: 15px;
@@ -156,7 +160,7 @@
   pointer-events: none;
   transition: 0.4s;
 }
-.sidebar.open li a .links_name, 
+.sidebar.open li a .links_name,
 .sidebar.open .links_section .links_name {
   opacity: 1;
   pointer-events: auto;
@@ -185,7 +189,6 @@
   width: calc(100% - 78px);
   transition: all 0.5s ease;
   z-index: 2;
-  padding: 12px 14px;
   @media screen and (max-width: 500px) {
     left: 65px;
     width: calc(100% - 65px);

@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>
+  <section class="home">
+    <h1 class="title">
       I am a
       <span id="about_words">
         {{ word }}
@@ -9,9 +9,13 @@
     <p>
       I am currently
       <span :style="{ color: status.color }">{{ status.status }}</span>
-      <i :style="{ color: status.color }" :class="`bx ${status.emoji} bx-tada-hover`" /> .
+      <i
+        :style="{ color: status.color }"
+        :class="`bx ${status.emoji} bx-tada-hover`"
+      />
+      .
     </p>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -30,25 +34,25 @@ export default {
     return {
       word: '',
       wordIndex: 0,
-      words: ['Web Developer.', 'Bot Developer.', 'Occasional Pentester.', 'Privacy Advocate.', 'Traveler.'],
+      words: [
+        'Web Developer.',
+        'Bot Developer.',
+        'Occasional Pentester.',
+        'Privacy Advocate.',
+        'Traveler.',
+      ],
       wordsIndex: 0,
       initialLoadWordInterval: null,
       mainWordInterval: null,
       intervalStatus: 'started',
       refreshPageInterval: null,
-      typingSound: null,
     };
   },
   beforeDestroy() {
     clearInterval(this.refreshPageInterval);
     clearInterval(this.mainWordInterval);
-    this.typingSound.pause();
-    this.typingSound = null;
   },
   mounted() {
-    // I do not own this file, have a issue? Contact me, i'll remove.
-    this.typingSound = new Audio('https://assets.codepen.io/162656/audio-old-typewriter.wav');
-    this.typingSound.play();
     this.initialInterval();
     this.mainInterval();
     this.init();
@@ -70,9 +74,7 @@ export default {
         if (this.wordIndex < word.length) {
           this.word += word.charAt(this.wordIndex);
           ++this.wordIndex;
-          this.typingSound.play();
         } else {
-          this.typingSound.pause();
           this.wordsIndex += 1;
           clearInterval(this.initialLoadWordInterval);
         }
@@ -91,13 +93,11 @@ export default {
           if (this.wordIndex > 0) {
             this.word = this.word.substr(0, this.wordIndex - 1);
             --this.wordIndex;
-            this.typingSound.play();
           } else {
             /*
               Clearing the interval then setting it to null to run the interval below.
               *
              */
-            this.typingSound.pause();
             clearInterval(removeWordInterval);
             removeWordInterval = null;
           }
@@ -107,7 +107,11 @@ export default {
           * If so we set the index back to 0
           * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
          */
-        const word = this.words[this.wordsIndex < this.words.length - 1 ? this.wordsIndex : this.wordsIndex = 0];
+        const word = this.words[
+          this.wordsIndex < this.words.length - 1
+            ? this.wordsIndex
+            : (this.wordsIndex = 0)
+        ];
 
         /*
           Creating a word interval, this is to add characters to the string.
@@ -120,9 +124,7 @@ export default {
           if (this.wordIndex < word.length) {
             this.word += word.charAt(this.wordIndex);
             ++this.wordIndex;
-            this.typingSound.play();
           } else {
-            this.typingSound.pause();
             clearInterval(wordInterval);
           }
         }, 50);
@@ -142,12 +144,6 @@ export default {
     pauseTimer() {
       this.intervalStatus = 'paused';
     },
-    windowOnFocus(event) {
-      this.startTimer();
-    },
-    windowOnBlur(event) {
-      this.pauseTimer();
-    },
     init() {
       window.onfocus = this.startTimer;
       window.onblur = this.pauseTimer;
@@ -157,8 +153,8 @@ export default {
 </script>
 
 <style scoped>
-  p {
-    margin-top: 10px;
-    font-size: 1.1rem;
-  }
+p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
 </style>

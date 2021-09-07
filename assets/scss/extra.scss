@@ -49,7 +49,8 @@
 }
 
 .box {
-  background-color: white;
+  background-color: var(--navbar-color);
+  color: var(--text-color-light);
   opacity: 0;
   width: 90%;
   padding: 20px;
@@ -62,7 +63,7 @@
   @media screen and (max-width: 480px) {
     width: 103%;
   }
-  
+
   animation: fadeInOpacity 1 1s forwards;
 }
 

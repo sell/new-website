@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <div class="content">
+    <section class="content">
       <div v-if="$nuxt.isOffline">
         <h1>Internet Connection: Offline</h1>
         <p>
@@ -10,6 +10,6 @@
       </div>
       <Nuxt v-else />
       <FloatingTip />
-    </div>
+    </section>
   </div>
 </template>

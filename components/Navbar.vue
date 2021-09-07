@@ -1,12 +1,17 @@
 <template>
-  <div :class="`sidebar ${active && 'open'}`">
+  <section :class="`sidebar ${active && 'open'}`">
     <div class="logo-details">
       <i class="bx bx-code-alt icon" />
       <div class="logo_name">
         Jay.Codes
       </div>
-      <i id="btn" :class="`bx ${active ? 'bx-x' : 'bx-menu'}`" @click="burger" />
+      <i
+        id="btn"
+        :class="`bx ${active ? 'bx-x' : 'bx-menu'}`"
+        @click="burger"
+      />
     </div>
+    <hr />
     <ul class="nav-list">
       <li>
         <nuxt-link to="/">
@@ -51,9 +56,14 @@
         <span class="tooltip">Telegram</span>
       </li>
       <li>
-        <span class="links_section" @click="changeTheme(theme === 'light' ? 'dark' : 'light')">
+        <span
+          class="links_section"
+          @click="changeTheme(theme === 'light' ? 'dark' : 'light')"
+        >
           <i :class="`bx ${theme === 'light' ? 'bx-moon' : 'bx-sun'}`" />
-          <span class="links_name">{{ theme === 'light' ? 'Dark' : 'Light' }} Mode</span>
+          <span class="links_name"
+            >{{ theme === 'light' ? 'Dark' : 'Light' }} Mode</span
+          >
         </span>
         <span class="tooltip">Dark Mode</span>
       </li>
@@ -64,20 +74,10 @@
         </nuxt-link>
         <span class="tooltip">Privacy Policy</span>
       </li>
-      <li>
-        <hr>
-      </li>
-      <li>
-        <a target="_blank" href="https://old.jayson.codes" rel="noreferrer">
-          <i class="bx bx-link" />
-          <span class="links_name">Old Website</span>
-        </a>
-        <span class="tooltip">External</span>
-      </li>
     </ul>
     <!-- Navbar was created by me, but was modified by me -->
     <!-- Navbar Source: -->
-  </div>
+  </section>
 </template>
 
 <script>
@@ -93,9 +93,10 @@ export default {
       return this.$store.state.theme;
     },
   },
-  // update state
   mounted() {
-    this.changeTheme((localStorage.getItem('theme') || 'light'));
+    this.changeTheme(
+      localStorage.getItem('theme') === 'light' ? 'light' : 'dark',
+    );
   },
   methods: {
     burger() {
@@ -108,6 +109,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

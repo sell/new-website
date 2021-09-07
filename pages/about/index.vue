@@ -3,18 +3,18 @@
     <h1>About Page</h1>
     <div class="box">
       <h3>About Me</h3>
-      <hr>
+      <hr />
       <p style="margin-top: 10px">
-        Hello <i class="bx bxs-hand-up" />, <br>
-        I am a aspiring Web and Bot Developer.
-        I am 19 Years of Age and was Born and Raised in the United States.
-        I primarily use <i class="bx bxl-javascript" /> for front and backend,
-        and I primarily use <i class="bx bxl-vuejs" /> for Web Development.
+        Hello <i class="bx bxs-hand-up" />, <br />
+        I am a aspiring Web and Bot Developer. I am 19 Years of Age and was Born
+        and Raised in the United States. I primarily use
+        <i class="bx bxl-javascript" /> for front and backend, and I primarily
+        use <i class="bx bxl-vuejs" /> for Web Development.
       </p>
     </div>
     <div class="box">
       <h3>Programming Languages and Tools I use</h3>
-      <hr>
+      <hr />
       <div class="tools__langs__container">
         <div class="langs">
           <span>HTML <i class="bx bxl-html5" /> </span>
@@ -38,13 +38,13 @@
           <span>MongoDB <i class="bx bxl-mongobd" /> </span>
           <span>Redis <i class="bx bxl-redis" /> </span>
           <span>Cloudflare Workers <i class="bx bxl-cloudflare" /> </span>
-          <span>Coming Soon <i class="bx bxl-mongobd" /> </span>
+          <span>Docker <i class="bx bxl-docker" /> </span>
         </div>
       </div>
     </div>
     <div class="box">
       <h3>Resume</h3>
-      <hr>
+      <hr />
       <p style="margin-top: 10px">
         Coming Soon
       </p>

@@ -26,6 +26,6 @@ export const mutations = {
   changeTheme(state, theme) {
     state.theme = theme;
     localStorage.setItem('theme', theme);
-    console.log(`----- Theme Changed too ${theme} -----`);
+    console.log(`----- Theme Changed to ${theme} -----`);
   },
 };

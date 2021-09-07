@@ -10,6 +10,11 @@
     "emoji": "bxs-circle bx-flashing"
   },
   "2": {
+    "status": "away",
+    "color": "orange",
+    "emoji": "bxs-circle bx-flashing"
+  },
+  "3": {
     "status": "busy",
     "color": "red",
     "emoji": "bxs-circle bx-flashing"

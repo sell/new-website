@@ -1,0 +1,29 @@
+.home {
+  height: calc(100vh - 14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    @media screen and (max-width: 500px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  #about_words {
+    text-decoration: underline;
+    color: var(--animation-text);
+    border-right: .12em solid var(--animation-text);
+    /*
+      css tricks animation
+     */
+    animation:
+      blink-caret .75s step-end infinite;
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--animation-text); }
+    }
+  }
+}
