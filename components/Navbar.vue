@@ -49,13 +49,6 @@
         <span class="tooltip">Github</span>
       </li>
       <li>
-        <a target="_blank" href="https://t.me/rookie" rel="noreferrer">
-          <i class="bx bxl-telegram" />
-          <span class="links_name">Telegram</span>
-        </a>
-        <span class="tooltip">Telegram</span>
-      </li>
-      <li>
         <span
           class="links_section"
           @click="changeTheme(theme === 'light' ? 'dark' : 'light')"
